@@ -1,11 +1,5 @@
 import csv
-import matplotlib.pyplot as plt
-
-def generate_bar_char(labels, values):
-    values = [int(value) for value in values]
-    fig, ax = plt.subplots()
-    ax.bar(labels, values)
-    plt.show()
+import plot
 
 def read_csv(path):
     country_input = input("Enter the country: ")
@@ -25,4 +19,6 @@ def read_csv(path):
 
 if __name__ == '__main__':
     data = read_csv("D:/Programacion/IA/curso-platzi-python2/python-102/files/world_population.csv")
-    generate_bar_char(list(data.keys()), list(data.values()))
+    values = list(data.values())
+    values = [int(value) for value in values]
+    plot.generate_bar_char(list(data.keys()), values)

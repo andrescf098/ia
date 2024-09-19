@@ -9,7 +9,7 @@ def read_csv(path):
             iterable = zip(header, row)
             country_dict = {key: value for key, value in iterable}
             data.append(country_dict)
-            return data
+        return data
 
 if __name__ == '__main__':
     data = read_csv("D:/Programacion/IA/curso-platzi-python2/python-102/files/world_population.csv")
