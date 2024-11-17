@@ -34,26 +34,26 @@ if __name__ == "__main__":
     df = pd.read_csv("./Models/handwriting_recognition/202301111911/val.csv").values.tolist()
 
     accum_cer = []
-    image = cv2.imread('./files/test2.png')
+    image = cv2.imread('./files/test4.png')
     prediction_text = model.predict(image)
     print(f"Prediction: {prediction_text}")
     cv2.imshow("Image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-"""     for image_path, label in df:
-        image = cv2.imread(image_path.replace("\\", "/"))
+""" for image_path, label in df:
+    image = cv2.imread(image_path.replace("\\", "/"))
 
-        prediction_text = model.predict(image)
+    prediction_text = model.predict(image)
 
-        cer = get_cer(prediction_text, label)
-        print(f"Image: {image_path}, Label: {label}, Prediction: {prediction_text}, CER: {cer}")
+    cer = get_cer(prediction_text, label)
+    print(f"Image: {image_path}, Label: {label}, Prediction: {prediction_text}, CER: {cer}")
 
-        accum_cer.append(cer)
+    accum_cer.append(cer)
 
-        # resize by 4x
-        image = cv2.resize(image, (image.shape[1] * 4, image.shape[0] * 4))
-        cv2.imshow("Image", image)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    # resize by 4x
+    image = cv2.resize(image, (image.shape[1] * 4, image.shape[0] * 4))
+    cv2.imshow("Image", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-    print(f"Average CER: {np.average(accum_cer)}") """
+print(f"Average CER: {np.average(accum_cer)}") """

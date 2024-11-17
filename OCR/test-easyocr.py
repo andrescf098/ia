@@ -3,7 +3,7 @@ import cv2
 
 read = easyocr.Reader(['es'], gpu=False)
 img = cv2.imread('files/1366_521.jpg')
-img = cv2.resize(img, (800, 600))
+#img = cv2.resize(img, (800, 600))
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 result = read.readtext(img, paragraph=False)
 

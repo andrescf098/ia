@@ -7,6 +7,12 @@ __pycache__/
 *.so
 Datasets/
 Models/
+*.jpeg
+*.jpg
+*.png
+*.gif
+*.pdf
+*.docx
 # Distribution / packaging
 .Python
 build/
