@@ -8,20 +8,18 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 def create_model(classes):
 
     input = Input(shape=(124, 124, 1))
-    # Convolutional Layer
-    x1 = Conv2D(75, (3,3), activation='relu')(input)
     # Second Convolutional Layer
-    x2 = Conv2D(75, (3,3), activation='relu')(x1)
-    x2_pool = MaxPooling2D(2, 2)(x2)
-    x2_flatten = Flatten()(x2_pool)
+    x1 = Conv2D(75, (3,3), activation='relu', padding='same')(input)
+    x1_pool = MaxPooling2D(2, 2)(x1)
+    x1_flatten = Flatten()(x1_pool)
     # Dense Layer
-    x3 = Dense(512, kernel_regularizer=regularizers.l2(1e-5), activation='relu')(x2_flatten)
-    x3_dropout = Dropout(0.2)(x3)
+    x2 = Dense(512, kernel_regularizer=regularizers.l2(1e-5), activation='relu')(x1_flatten)
+    x2_dropout = Dropout(0.2)(x2)
     # Second Dense Layer
-    x4 = Dense(128, kernel_regularizer=regularizers.l2(1e-5), activation='relu')(x3_dropout)
-    x4_dropout = Dropout(0.2)(x4)
+    x3 = Dense(128, kernel_regularizer=regularizers.l2(1e-5), activation='relu')(x2_dropout)
+    x3_dropout = Dropout(0.2)(x3)
     # Output Layer
-    output_layer = Dense(len(classes), activation='softmax')(x4_dropout)
+    output_layer = Dense(len(classes), activation='softmax')(x3_dropout)
     model = Model(input, output_layer)
 
     return model
